@@ -864,8 +864,16 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive Design */
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ======================================== */
+
+/* Tablet Landscape (1024px and down) */
 @media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    
     .details-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -874,81 +882,712 @@ body {
     .product-image-large img {
         height: 300px;
     }
+    
+    .carousel-item {
+        min-width: 280px;
+    }
+    
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+    }
 }
 
+/* Tablet Portrait (768px and down) */
 @media (max-width: 768px) {
     .container {
-        padding: 0 15px;
+        padding: 0 12px;
+    }
+    
+    /* Header Mobile */
+    .top-bar {
+        padding: 6px 0;
+    }
+    
+    .contact-info {
+        font-size: 0.85rem;
+    }
+    
+    .contact-info i {
+        font-size: 12px;
     }
     
     .nav-menu {
         display: none;
     }
     
-    .page-title {
-        font-size: 2.2rem;
+    .logo {
+        height: 35px;
     }
     
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    /* Main Content */
+    .page-title {
+        font-size: 2rem;
+        margin: 20px 0;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Category Selector */
     .category-selector {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
     }
     
+    .category-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* Carousel Mobile */
     .carousel-container {
-        padding: 20px;
+        padding: 15px 0;
+        margin: 0 -12px;
+    }
+    
+    .carousel-wrapper {
+        padding: 0 15px;
     }
     
     .carousel-item {
-        min-width: 250px;
+        min-width: 240px;
+        margin-right: 15px;
     }
     
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
+    .carousel-item img {
+        height: 180px;
+    }
+    
+    .carousel-item-info {
+        padding: 12px;
+    }
+    
+    .carousel-item-info h3 {
         font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    
+    .carousel-item-info p {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .price-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .current-price {
+        font-size: 1.4rem;
+    }
+    
+    .original-price {
+        font-size: 0.9rem;
+    }
+    
+    .discount-badge {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+    
+    /* Carousel Controls */
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
     
     .prev-btn {
-        left: -20px;
+        left: -10px;
     }
     
     .next-btn {
-        right: -20px;
+        right: -10px;
     }
     
+    /* Product Details Panel */
     .product-details-panel {
-        padding: 20px;
+        padding: 15px;
+        margin: 15px -12px 0;
     }
     
+    .product-info-detailed h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    
+    .product-info-detailed p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .features-list {
+        font-size: 0.85rem;
+    }
+    
+    .features-list li {
+        margin-bottom: 6px;
+    }
+    
+    /* Action Buttons */
     .action-buttons {
         flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
     }
     
     .primary-btn,
     .secondary-btn,
     .tertiary-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 0.95rem;
         min-width: auto;
+    }
+    
+    /* Comparison Modal Mobile */
+    .comparison-modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 10px;
+        max-height: 90vh;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .comparison-item {
+        padding: 15px;
+    }
+    
+    .comparison-item img {
+        height: 120px;
+    }
+    
+    .comparison-content h3 {
+        font-size: 1rem;
+    }
+    
+    .comparison-price {
+        font-size: 1.2rem;
+    }
+    
+    .comparison-features {
+        font-size: 0.85rem;
+    }
+    
+    .comparison-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .clear-comparison-btn,
+    .whatsapp-comparison-btn {
+        width: 100%;
+        padding: 12px;
     }
 }
 
-@media (max-width: 480px) {
-    .page-title {
-        font-size: 1.8rem;
-    }
-    
+/* Mobile Landscape (600px and down) */
+@media (max-width: 600px) {
     .carousel-item {
         min-width: 200px;
     }
     
+    .carousel-item img {
+        height: 160px;
+    }
+    
     .carousel-item-info {
-        padding: 15px;
+        padding: 10px;
+    }
+    
+    .carousel-item-info h3 {
+        font-size: 0.95rem;
+    }
+    
+    .carousel-item-info p {
+        font-size: 0.8rem;
     }
     
     .current-price {
-        font-size: 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .prev-btn {
+        left: -5px;
+    }
+    
+    .next-btn {
+        right: -5px;
+    }
+}
+
+/* Mobile Portrait (480px and down) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Header */
+    .top-bar {
+        padding: 5px 0;
+    }
+    
+    .contact-info {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .logo {
+        height: 30px;
+    }
+    
+    .logo-text {
+        font-size: 1rem;
+    }
+    
+    /* Main Content */
+    .page-title {
+        font-size: 1.6rem;
+        margin: 15px 0;
+    }
+    
+    .page-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Category Selector */
+    .category-selector {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .category-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Carousel */
+    .carousel-container {
+        padding: 10px 0;
+        margin: 0 -10px;
+    }
+    
+    .carousel-wrapper {
+        padding: 0 10px;
+    }
+    
+    .carousel-item {
+        min-width: 180px;
+        margin-right: 10px;
+    }
+    
+    .carousel-item img {
+        height: 140px;
+    }
+    
+    .carousel-item-info {
+        padding: 8px;
+    }
+    
+    .carousel-item-info h3 {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .carousel-item-info p {
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+    }
+    
+    .current-price {
+        font-size: 1.1rem;
+    }
+    
+    .original-price {
+        font-size: 0.8rem;
+    }
+    
+    .discount-badge {
+        font-size: 0.65rem;
+        padding: 1px 4px;
+    }
+    
+    /* Product Details */
+    .product-details-panel {
+        padding: 12px;
+        margin: 12px -10px 0;
     }
     
     .product-info-detailed h2 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .product-info-detailed p {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+    
+    .features-list {
+        font-size: 0.8rem;
+    }
+    
+    .features-list li {
+        margin-bottom: 4px;
+    }
+    
+    /* Action Buttons */
+    .action-buttons {
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .primary-btn,
+    .secondary-btn,
+    .tertiary-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Comparison Modal */
+    .comparison-modal-content {
+        width: 98%;
+        margin: 5px;
+        max-height: 95vh;
+    }
+    
+    .comparison-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .comparison-item {
+        padding: 12px;
+    }
+    
+    .comparison-item img {
+        height: 100px;
+    }
+    
+    .comparison-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .comparison-price {
+        font-size: 1rem;
+    }
+    
+    .comparison-features {
+        font-size: 0.8rem;
+    }
+}
+
+/* Extra Small Mobile (360px and down) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .carousel-item {
+        min-width: 160px;
+    }
+    
+    .carousel-item img {
+        height: 120px;
+    }
+    
+    .carousel-item-info {
+        padding: 6px;
+    }
+    
+    .carousel-item-info h3 {
+        font-size: 0.85rem;
+    }
+    
+    .carousel-item-info p {
+        font-size: 0.7rem;
+    }
+    
+    .current-price {
+        font-size: 1rem;
+    }
+    
+    .page-title {
+        font-size: 1.4rem;
+    }
+    
+    .product-info-detailed h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+    
+    .primary-btn,
+    .secondary-btn,
+    .tertiary-btn {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+    
+    .category-btn {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+    
+    .carousel-item {
+        cursor: pointer;
+    }
+    
+    .carousel-item:hover {
+        transform: none;
+    }
+    
+    .carousel-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ========================================
+   MOBILE-SPECIFIC ENHANCEMENTS
+   ======================================== */
+
+/* Smooth scrolling for mobile */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile device specific styles */
+.mobile-device .carousel-item {
+    touch-action: pan-x;
+}
+
+.mobile-device .carousel-wrapper {
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection on mobile during swipe */
+.mobile-device .carousel-item,
+.mobile-device .carousel-btn {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Improve tap targets for mobile */
+.mobile-device .carousel-btn {
+    position: relative;
+    z-index: 10;
+}
+
+.mobile-device .carousel-btn::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+    .carousel-item {
+        transition: transform 0.3s ease-out;
+    }
+    
+    .carousel-item:active {
+        transform: scale(0.98);
+    }
+    
+    .primary-btn:active,
+    .secondary-btn:active,
+    .tertiary-btn:active {
+        transform: scale(0.98);
+    }
+    
+    .category-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Loading states for mobile */
+.lazy {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lazy.loaded {
+    opacity: 1;
+}
+
+/* Mobile-specific focus states */
+@media (max-width: 768px) {
+    .carousel-btn:focus,
+    .primary-btn:focus,
+    .secondary-btn:focus,
+    .tertiary-btn:focus,
+    .category-btn:focus {
+        outline: 2px solid #8B0000;
+        outline-offset: 2px;
+    }
+}
+
+/* Mobile landscape specific adjustments */
+@media (max-width: 896px) and (orientation: landscape) {
+    .page-title {
         font-size: 1.6rem;
+        margin: 10px 0;
+    }
+    
+    .page-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .category-selector {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .category-btn {
+        width: auto;
+        min-width: 120px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-item img {
+        height: 120px;
+    }
+    
+    .carousel-item-info {
+        padding: 8px;
+    }
+    
+    .carousel-item-info h3 {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-item-info p {
+        font-size: 0.8rem;
+    }
+    
+    .current-price {
+        font-size: 1.1rem;
+    }
+    
+    .product-details-panel {
+        padding: 10px;
+    }
+    
+    .product-info-detailed h2 {
+        font-size: 1.2rem;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .primary-btn,
+    .secondary-btn,
+    .tertiary-btn {
+        flex: 1;
+        min-width: auto;
+    }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .carousel-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .carousel-item {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .carousel-item-info {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .product-details-panel {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-item,
+    .primary-btn,
+    .secondary-btn,
+    .tertiary-btn,
+    .category-btn {
+        transition: none;
+    }
+    
+    .carousel-item:hover {
+        transform: none;
+    }
+    
+    .carousel-item:active {
+        transform: none;
+    }
+}
+
+/* Print styles for mobile */
+@media print {
+    .carousel-btn,
+    .action-buttons,
+    .comparison-modal {
+        display: none !important;
+    }
+    
+    .carousel-item {
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+    .page-title {
+        color: #000 !important;
     }
 }

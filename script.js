@@ -672,3 +672,184 @@ function stopAutoPlay() {
 // Stop auto-play on user interaction
 document.addEventListener('click', stopAutoPlay);
 document.addEventListener('keydown', stopAutoPlay);
+
+// ========================================
+// MOBILE TOUCH/SWIPE FUNCTIONALITY
+// ========================================
+
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+const minSwipeDistance = 50;
+
+// Touch events for carousel
+const carouselWrapper = document.querySelector('.carousel-wrapper');
+
+if (carouselWrapper) {
+    carouselWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    });
+
+    carouselWrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    });
+}
+
+function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    
+    // Check if it's a horizontal swipe (not vertical scroll)
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) {
+            // Swipe right - go to previous
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        } else {
+            // Swipe left - go to next
+            if (currentIndex < currentProducts.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+    }
+}
+
+// ========================================
+// MOBILE-SPECIFIC ENHANCEMENTS
+// ========================================
+
+// Detect mobile device
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           window.innerWidth <= 768;
+}
+
+// Optimize carousel for mobile
+function optimizeForMobile() {
+    if (isMobile()) {
+        // Add mobile-specific classes
+        document.body.classList.add('mobile-device');
+        
+        // Adjust carousel behavior for mobile
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        carouselItems.forEach(item => {
+            item.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+            }, { passive: false });
+        });
+        
+        // Improve button accessibility for touch
+        const buttons = document.querySelectorAll('.carousel-btn, .primary-btn, .secondary-btn, .tertiary-btn, .category-btn');
+        buttons.forEach(button => {
+            button.style.minHeight = '44px';
+            button.style.minWidth = '44px';
+        });
+    }
+}
+
+// Initialize mobile optimizations
+document.addEventListener('DOMContentLoaded', optimizeForMobile);
+
+// ========================================
+// RESPONSIVE CAROUSEL ADJUSTMENTS
+// ========================================
+
+function adjustCarouselForScreenSize() {
+    const screenWidth = window.innerWidth;
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    
+    if (screenWidth <= 480) {
+        // Mobile portrait - show fewer items
+        carouselItems.forEach(item => {
+            item.style.minWidth = '180px';
+        });
+    } else if (screenWidth <= 768) {
+        // Mobile landscape/tablet portrait
+        carouselItems.forEach(item => {
+            item.style.minWidth = '240px';
+        });
+    } else if (screenWidth <= 1024) {
+        // Tablet landscape
+        carouselItems.forEach(item => {
+            item.style.minWidth = '280px';
+        });
+    } else {
+        // Desktop
+        carouselItems.forEach(item => {
+            item.style.minWidth = '320px';
+        });
+    }
+}
+
+// Adjust carousel on resize
+window.addEventListener('resize', () => {
+    adjustCarouselForScreenSize();
+    optimizeForMobile();
+});
+
+// Initial adjustment
+adjustCarouselForScreenSize();
+
+// ========================================
+// MOBILE MODAL IMPROVEMENTS
+// ========================================
+
+// Improve modal behavior on mobile
+function improveMobileModals() {
+    const comparisonModal = document.getElementById('comparisonModal');
+    
+    if (comparisonModal && isMobile()) {
+        // Prevent body scroll when modal is open
+        const originalBodyOverflow = document.body.style.overflow;
+        
+        comparisonModal.addEventListener('show', () => {
+            document.body.style.overflow = 'hidden';
+        });
+        
+        comparisonModal.addEventListener('hide', () => {
+            document.body.style.overflow = originalBodyOverflow;
+        });
+        
+        // Close modal when tapping outside on mobile
+        comparisonModal.addEventListener('click', (e) => {
+            if (e.target === comparisonModal) {
+                closeComparisonModal();
+            }
+        });
+    }
+}
+
+// Initialize mobile modal improvements
+document.addEventListener('DOMContentLoaded', improveMobileModals);
+
+// ========================================
+// PERFORMANCE OPTIMIZATIONS FOR MOBILE
+// ========================================
+
+// Lazy load images for better mobile performance
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Initialize lazy loading
+document.addEventListener('DOMContentLoaded', lazyLoadImages);

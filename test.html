@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Kilto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .header {
+            background: #8B0000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .image-test {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-test img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔧 Test de Diagnóstico - Kilto</h1>
+        <p>Verificando que todos los archivos se carguen correctamente</p>
+    </div>
+
+    <div class="test-section">
+        <h2>✅ Test 1: CSS Inline</h2>
+        <div class="status success">
+            Si ves este texto con fondo verde, el CSS inline está funcionando.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🖼️ Test 2: Imágenes</h2>
+        <div class="image-test">
+            <h3>Logo Kilto:</h3>
+            <img src="imgs/kiltologo.png" alt="Logo Kilto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:red;">❌ Error: No se pudo cargar kiltologo.png</div>
+        </div>
+        
+        <div class="image-test">
+            <h3>Fregadero Digital:</h3>
+            <img src="imgs/fregaderos/fregaderodigital/fregadero0.jpeg" alt="Fregadero Digital" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:red;">❌ Error: No se pudo cargar fregadero0.jpeg</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📁 Test 3: Archivos</h2>
+        <div id="file-test">
+            <p>Verificando archivos...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 Test 4: Información del Servidor</h2>
+        <div id="server-info">
+            <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+            <p><strong>URL:</strong> <span id="current-url"></span></p>
+            <p><strong>Protocolo:</strong> <span id="protocol"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Test de archivos
+        const fileTest = document.getElementById('file-test');
+        
+        // Verificar si los archivos existen
+        fetch('styles.css')
+            .then(response => {
+                if (response.ok) {
+                    fileTest.innerHTML += '<div class="status success">✅ styles.css - OK</div>';
+                } else {
+                    fileTest.innerHTML += '<div class="status error">❌ styles.css - Error</div>';
+                }
+            })
+            .catch(() => {
+                fileTest.innerHTML += '<div class="status error">❌ styles.css - No encontrado</div>';
+            });
+
+        fetch('script.js')
+            .then(response => {
+                if (response.ok) {
+                    fileTest.innerHTML += '<div class="status success">✅ script.js - OK</div>';
+                } else {
+                    fileTest.innerHTML += '<div class="status error">❌ script.js - Error</div>';
+                }
+            })
+            .catch(() => {
+                fileTest.innerHTML += '<div class="status error">❌ script.js - No encontrado</div>';
+            });
+
+        // Información del servidor
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('protocol').textContent = window.location.protocol;
+    </script>
+</body>
+</html>

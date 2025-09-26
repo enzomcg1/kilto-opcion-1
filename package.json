@@ -1,0 +1,13 @@
+{
+  "name": "kilto-carrusel-interactivo",
+  "version": "1.0.0",
+  "description": "Carrusel interactivo para productos Kilto",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "start": "echo 'Static site'"
+  },
+  "keywords": ["kilto", "carrusel", "fregaderos", "static"],
+  "author": "Kilto",
+  "license": "MIT"
+}
