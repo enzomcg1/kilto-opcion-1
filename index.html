@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilto - Fregaderos de Cocina</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@kilto.es</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <img src="imgs/kiltologo.png" alt="Kilto Logo">
+                    <span>KILTO</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">INICIO</a></li>
+                    <li><a href="#nosotros">NOSOTROS</a></li>
+                    <li><a href="#modelos">NUESTROS MODELOS</a></li>
+                    <li><a href="#promociones">PROMOCIONES</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Nuestros Productos</h1>
+            <p class="page-description">
+                Descubre nuestra amplia gama de fregaderos de cocina. Desde modelos tradicionales hasta innovadores fregaderos digitales con tecnología avanzada.
+            </p>
+
+            <!-- Category Selector -->
+            <div class="category-selector">
+                <button class="category-btn active" data-category="all">Todos los Productos</button>
+                <button class="category-btn" data-category="digital">Fregaderos Digitales</button>
+                <button class="category-btn" data-category="normal">Fregaderos Tradicionales</button>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel" id="productCarousel">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Navigation Controls -->
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Dots Indicator -->
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Product Details Panel -->
+            <div class="product-details-panel" id="productDetailsPanel">
+                <div class="details-content">
+                    <div class="product-image-large">
+                        <img id="detailImage" src="" alt="">
+                        <div class="image-overlay">
+                            <button class="zoom-btn" id="zoomBtn">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info-detailed">
+                        <h2 id="detailTitle">Selecciona un producto</h2>
+                        <p id="detailDescription">Haz clic en cualquier producto del carrusel para ver sus detalles completos.</p>
+                        
+                        <div class="product-specs" id="productSpecs">
+                            <!-- Specifications will be loaded here -->
+                        </div>
+                        
+                        <div class="product-features-detailed" id="productFeaturesDetailed">
+                            <!-- Features will be loaded here -->
+                        </div>
+                        
+                        <div class="product-pricing">
+                            <div class="price-display">
+                                <span class="current-price" id="currentPrice">€0.00</span>
+                                <span class="old-price" id="oldPrice" style="display: none;"></span>
+                            </div>
+                            <div class="price-note">Precio sin IVA</div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="secondary-btn" id="whatsappBtn">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </button>
+                            <button class="tertiary-btn" id="compareBtn">
+                                <i class="fas fa-balance-scale"></i>
+                                Comparar
+                            </button>
+                        </div>
+                        
+                        <div class="product-benefits">
+                            <h3>Beneficios del Producto</h3>
+                            <ul id="productBenefits">
+                                <!-- Benefits will be loaded here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageZoomModal" class="zoom-modal">
+        <div class="zoom-modal-content">
+            <span class="zoom-close">&times;</span>
+            <img id="zoomedImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="comparisonModal" class="comparison-modal">
+        <div class="comparison-modal-content">
+            <div class="comparison-header">
+                <h2>Comparar Productos</h2>
+                <span class="comparison-close">&times;</span>
+            </div>
+            <div class="comparison-body" id="comparisonBody">
+                <!-- Comparison content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
